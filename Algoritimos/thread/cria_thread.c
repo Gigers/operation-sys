@@ -34,6 +34,10 @@ main(void) {
     pthread_create(&processo_A, NULL, processo, NULL);
     pthread_create(&processo_B, NULL, processo, NULL);
 
+    // Acompanha o retorno dos processos
+    // Argumentos do pthread_join
+    // 1° - thread a ser monitorada
+    // 2° - variavel onde possívelmente será alocado o retorno
     pthread_join(processo_A, NULL);
     pthread_join(processo_B, NULL);
 
