@@ -25,6 +25,14 @@
 
 * Processo que nunca entra em execução por falta de disponibilidade de recursos.
 
+# Quantum
+
+* Este é o tempo atribuido para algum processo ser executado.
+
+# Overhead
+
+* É a alocação de recursos em excesso feitas por algum processo
+
 # Algoritimos de escalonamento de processos
 
 * FIFO (First In, Firts Out)
@@ -40,9 +48,10 @@
 
     * OBS: Este tempo é calculado através de uma estimativa feita pelo sistema operacional.
 
-* Circular:
+* Circular (Round Robin):
     * O escalonamento circular utiliza do conceitos de filas (FIFO) para trabalhar, porém neste caso o conceito de tempo é aplicado, ou seja, cada processo tem uma fatia de tempo para ser executada, e caso expire, o processo volta para o final da fila;
     * Neste caso os processos I/O bound tem desvantagens e podem apresentar problemas;
+    * Este processo também é conhecido como Quantum ou Round Robin.
 * Prioridades:
     * Este é um escalonamento que realiza as decisões com base no valor da prioridade de execução , o processo com maior prioridade na fila para a execução sempre é o primeiro a ser escolhido.
     * Caso haja escalonamento entre processos de mesma prioridade, o que irá valer será quem está na fila a mais tempo.
@@ -67,8 +76,28 @@ Exercícios do 12 ao 18
 
 <code>13</code>
 * a-) Em que tempos A sofre preempção ?
-    * R: Nos tempos 25-29
+    * R: Nos tempos 25-29, 55-59
 * b-) Em que tempos B sofre preempção ? 
-    * R: Nos tempos 55-59
+    * R: Nunca, pois o processo B tem prioridade maior que o processo A
 * c-) Refaça a tabela anterior supondo que o processo A é mais prioritário que o processo B
     * R: Resposta na pasta <code>atividade_13-c_page_153</code>
+
+<code>14</code>
+* R: Quanto maior é o quantum, menor será o número de preepções, e isso acaba afetando todo o 
+sistema multiprogramado, este caso favorece os processos CPU Bound e deixa de lado os processos I/O Bound. Caso o valor seja muito pequeno, ocorrerá o problema de OverHead, já que em curtos espaços de tempo, haverão muitas trocas de contexto e alocação de novos recursos
+
+<code>15</code>
+* a-) T = 8.ut
+    * P1: Executando;
+    * P2: Pronto;
+    * P3: Pronto.
+
+* b-) T = 11 u.t
+    * P1: Pronto;
+    * P2: Executando;
+    * P3: Pronto.
+
+* c-) T = 33 u.t
+    * P1: Finalizado;
+    * P2: Finalizado;
+    * P3: Executando.
