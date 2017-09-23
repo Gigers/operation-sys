@@ -33,6 +33,10 @@
 
 * É a alocação de recursos em excesso feitas por algum processo
 
+# Temp de turnaround
+
+* Este é o tempo que o processo leva desde sua criação até seu término, levando em consideração todo o tempo gasto com alocação de memória e recursos, espera, processamento. As politicas de escalonamento tentam diminuir este número
+
 # Algoritimos de escalonamento de processos
 
 * FIFO (First In, Firts Out)
@@ -67,7 +71,6 @@
     se adequam a todos a certos escalonamentos, assim, cada fila tem um escalonador, sendo eles FIFO ou circular;
     * O processo não tem prioridade, esta fica a cargo das filas;
 
-
 # Exercícios
 
 Exercícios do 12 ao 18
@@ -101,3 +104,66 @@ sistema multiprogramado, este caso favorece os processos CPU Bound e deixa de la
     * P1: Finalizado;
     * P2: Finalizado;
     * P3: Executando.
+
+<code>16</code>
+* a-) T = 8 u.t
+    * P1: Espera
+    * P2: Em execução
+    * P3: Pronto
+* b-) T = 18 u.t
+    * P1: Em execução
+    * P2: Finalizado
+    * P3: Em espera
+* c-) T = 28 u.t
+    * P1: Em espera
+    * P2: Finalizado
+    * P3: Em execução
+
+<code>17</code>
+P1 - 9
+P2 - 6
+P3 - 3
+P4 - 5
+
+P3, P4, P2, P1, esta ordem evita e diminui o processo de Turnarround. Esta escolha foi feita utilizando a forma de escalonamento SJF
+
+<code>18</code>
+
+O exercício 18 utilizou o seguinte conceito para a solução do problema
+
+![alt text](./turnArroundTime.png "TurnArround")
+
+* a-) FIFO
+    * 0 u.t
+        *  1° - 40 
+        *  2° - 20
+            * 60 / 4 = 15
+        *  3° - 50
+        *  4° - 30
+                 80 / 4 = 20
+        R: 35
+
+    * 5 u.t
+        * 1° - 40 \* 5 = 200
+        * 2° - 20 \* 5 = 100
+            * 300 / 4 = 75
+        * 3° - 50 \* 5 = 250
+        * 4° - 30 \* 5 = 150
+            * 400 / 4 = 100
+        
+        R: 700 / 4 = 175
+
+* b-) SJF
+    * 0 u.t 
+        * 1° - 20
+        * 2° - 30
+            * 50 / 4 = 12
+        * 3° - 40
+        * 4° - 50
+            * 90 / 4 = 22
+        R: 34
+
+* c-) Circular com fatia de tempo igual a 20 u.t
+
+
+* d-) Prioridades
