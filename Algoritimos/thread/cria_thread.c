@@ -15,7 +15,7 @@ void *
 processo(){
 
     printf("Processo criado\n");
-    sleep(5);
+    sleep(10);
 }
 
 void

@@ -33,7 +33,7 @@
 
 * É a alocação de recursos em excesso feitas por algum processo
 
-# Temp de turnaround
+# Tempo de turnaround
 
 * Este é o tempo que o processo leva desde sua criação até seu término, levando em consideração todo o tempo gasto com alocação de memória e recursos, espera, processamento. As politicas de escalonamento tentam diminuir este número
 
@@ -137,33 +137,44 @@ O exercício 18 utilizou o seguinte conceito para a solução do problema
     * 0 u.t
         *  1° - 40 
         *  2° - 20
-            * 60 / 4 = 15
         *  3° - 50
-        *  4° - 30
-                 80 / 4 = 20
-        R: 35
+        *  4° - 30 
+        * R: (40 + 20 + 50 + 30) / 4 = 35
 
     * 5 u.t
-        * 1° - 40 \* 5 = 200
-        * 2° - 20 \* 5 = 100
-            * 300 / 4 = 75
-        * 3° - 50 \* 5 = 250
-        * 4° - 30 \* 5 = 150
-            * 400 / 4 = 100
-        
-        R: 700 / 4 = 175
+        * 1° - 40 
+        * 2° - 20 + 45 = 65
+        * 3° - 50 + 70 = 120
+        * 4° - 30 + 125 = 150
+        * R: (40 + 65 + 120 + 150) / 4 = 93
 
 * b-) SJF
     * 0 u.t 
-        * 1° - 20
-        * 2° - 30
-            * 50 / 4 = 12
-        * 3° - 40
-        * 4° - 50
-            * 90 / 4 = 22
-        R: 34
+        * P2: 20
+        * P4: 30 + 20 = 50
+        * P1: 40 + 50 = 90
+        * P3: 50 + 90 = 140
+        * R: 75
+    * 5 u.t
+        * P2: 20
+        * P4: 30 + 25 = 55
+        * P1: 40 + 60 = 100
+        * P3: 50 + 100 = 150
+        * R: 81
 
 * c-) Circular com fatia de tempo igual a 20 u.t
 
 
 * d-) Prioridades
+    * 0 u.t
+        * P3: 50
+        * P2: 20 + 50 = 70
+        * P4: 30 + 70 = 100
+        * P1: 40 + 100 = 140
+        * R: 310
+    * 5 u.t
+        * P3: 50
+        * P2: 20 + 55 = 75
+        * P4: 30 + 80 = 110
+        * P1: 40 + 115 = 155
+        * R: 97
