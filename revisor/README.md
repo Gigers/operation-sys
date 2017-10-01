@@ -34,5 +34,22 @@ A leitura é importânte, porém para a fixação dos conceitos é necessário f
   * O que é um Sistema Operacional ?
      * Sistema Operacional, resumidamente é apenas um conjunto de rotinas executado pelo processador, podemos dizer que é semelhante aos programas dos usuários. Sua principal função é controlar o funcionamento de um computador, gerenciando a utilização e o compartilhamento dos seus diversos recursos, como processadores, memrias e dispositivos de entrada e saída
   * Tipos de Sistemas Operacionais
+  
   * * Sistemas Monoprogramáveis / Monotarefa
-       * Sistema monoprográmavel são sistemas que é possível a execução de apenas um processo por vez
+  
+       * Foram os primeiros sistemas operacionais. São sistemas que pode-se executar apenas um programa por vez, para que outra aplicação fosse executada, deveria aguardar o término do programa corrente. Processador, memria e periféricos são de total exclusividade a execução de um único programa.
+         Sua implantação é extremamente simples, não existindo preocupação no compartilhamento de recursos, tais como memória, processador e dispositivos E/S
+         
+  * * Sistemas Multiprogramáveis / Multitarefa
+  
+      * UMa evolução dos antigos sistemas monoprogramáveis, aqui é diferente, os recursos computacionais são compartilhados entre aplicações e usuários. Enquanto um simples programa espera para ler ou gravar algo em disco, outros programas estão sendo processados no mesmo intervalo de tempo. O S.O se preocupa em gerenciar o acesso concorrente aos diversos recursos, de maneira ordenada e protegida. Suas vantagens: custo reduzido, redução total de tempo de execução dos programas. Desvantagens: mais complexo a implementação.
+      
+   * Ele pode ser dividido em três sistemas: batch, tempo compartilhado e tempo real.
+   
+   * Sistema Batch:
+      * Primeiros tipos de sistema operacionais multiprogramáveis. Os programas(jobs) eram submetidos para execução usando cartes perfurados e armazenados em disco ou fita, sendo guardados para serem processados. Os jobs eram executados, produzindo uma saída em disco ou fita.
+       Ele não exige interação do usuário com a aplicação. Entradas e saídas de dados implementadas por memória secundária(geralmente arquivos em disco)
+       Quando bem projetados são eficientes, já que utilizam melhor o processador, só que o tempo de resposta pode ser longo.
+       Exemplo de aplicações: envolvendo cálculos numericos, compilações, ordenações, backups e outros que não é necessário o usuario.
+  * Sistemas de tempo compartilhado
+  
