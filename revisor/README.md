@@ -1,3 +1,11 @@
+# Aviso
+
+Aqui há apenas resumos dos cápitulos, que foram escritos durante os estudos. Assim é recomendado que para utilizar o resumo, já se tenha lido o livro, ou esteja familiarizado com a matéria, já que este é a simplificação do conteúdo.
+
+## Status do documento
+
+Status atual do conteúdo: Incompleto
+
 ## ROADMAP - Sistemas operacionais 
 
 ROADMAP para prova de sistemas operacionais
@@ -118,6 +126,54 @@ Nesta segunda parte os assuntos de hardware e software serão tratados brevement
   Abaixo serão descrito as características de cada um.
 
   * Processador
+    * O processador ou unidade central de processamento (UCP) é responsável em controlar todas as ações de cada uma das unidades funcionais. Além disso é o responsável em realizar as comparações e cálculos básicos;
+    * Cada processador é composto de:
+      * Unidade de controle (UC): É a responsável em gerenciar as atividades de todos os componentes do computador, como a gravação ou leitura de dados e a busca de instruções na memória; 
+      * Unidade lógica e aritmética (ULA): Esta é responsável pelas comparações lógicas e aritméticas 
+      * Registradores: Os registradores, são memórias de alta velocidade, cujo a função é armazenar temporáriamente alguns dados, porém o espaço é muito reduzido.
+        * Vale lembrar que o número de registradores varia com a arquitetura;
+        * Há registradores que aceitam ser manipulados, esses são conhecidos por serem registradores de uso geral, porém há registrados de uso específico, sendo utilizados para o armazenamento de instruções de controle e do sistema operacional;
+        * Das instruções ditas como específicas acima, se destacam várias, sendo algumas delas:
+          * Contador de instruções (CT) - Contém o endereço da próxima instrução a ser executada pelo processador;
+          * Stack pointer (SP) - Contém o endereço de memória do topo da pilha, estrutura esta que é utilizada para manter salvas informações sobre os programas que estão sendo utilizados;
+          * Registrador de status (PSW) - É responsável por armazenar informações sobre a execução de instruções; 
+
+    * Todos estes processos são sincronizados por um sinal de clock 
+
+  * Memória principal
+    A memória principal é o local onde são armazenados instruções e dados, esta é formada por um conunto de células, onde cada célula possui um determinado número de bits.
+    
+    Para realizar o acesso a memória deve-se utilizar o endereço, este que é uma referência única feita as células de memória;
+
+    A específicação deste endereço é feita através de um registrador chamado <code>Memory address register</code> ou <code>MAR</code>, com este registrador a UCP sabe qual célula deve ser acessada.
+    Outros registrador utilizados pelas células na memória é o <code>Memory Buffer Register</code> ou <code>MBR</code>.
+
+  * Memória cache
+    
+
+  * Memória secundária
+
+  * Dispositivos de entreda e saída
+
+  * Barramento
+
+  * Pipelining
+
+  * Arquiteturas RISC e CISC
+
+  * Análise de desempenho
+
+* Software
+
+  * Tradutor
+
+  * Interpretador
+
+  * Linker
+
+  * Loader
+
+  * Depurador
   
 
 
