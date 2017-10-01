@@ -27,6 +27,12 @@ A leitura é importânte, porém para a fixação dos conceitos é necessário f
 * Página 94 - Exercícios 1, 2, 3;
 * Página 152 - Exercícios 12 a 18.
 
+#### Laboratórios
+
+Além dos exercícios na aula de processos, há um exercício lab para ser feito.
+
+* Página 84 - Laboratório com SOSim - Atividade 1 e 2
+
 ### Parte 1 -  Conceitos Básicos
 
 * O que é um Sistema Operacional ?

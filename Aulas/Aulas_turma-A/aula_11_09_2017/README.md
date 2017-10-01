@@ -15,7 +15,6 @@
 
 * Para a próxima aula ler: Semáfaros 7.7 e Problema dos filósofos 7.7.3 e 7.7.4
 
-
 # Deadlock
 
 * Para que fique bem entendido, o DeadLOCK é o problema causado quando vários programas precisam dos recursos de outros processos para executar, um exemplo deste tipo de problema pode ser visto no problema dos filósofos
