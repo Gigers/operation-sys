@@ -1,6 +1,6 @@
 # Aula 11-09-2017
 
-* Compartilhamneto de memória pode ser danoso, para isso algumas técnicas são utilizadas para evitar que problemas ocorram.
+* Compartilhamento de memória pode ser danoso, para isso algumas técnicas são utilizadas para evitar que problemas ocorram.
     * O primeiro deles é a exclusão mutua, que evita que multiplos processos escrevam na mesma região de memória, durante a sessão critica;
         * Sessão critica: Momento de uso de uma parte da memória por um processo.
     * Há também soluções de hardware e software para resolver estes problemas.
@@ -15,10 +15,9 @@
 
 * Para a próxima aula ler: Semáfaros 7.7 e Problema dos filósofos 7.7.3 e 7.7.4
 
-
 # Deadlock
 
-* Para que fique bem entendido, o DeadLOCK é o problema causado quando vários programas precisam dos recursos de outros processos para executar, um exemplo deste tipo de problema pode ser visto no problema dos filósofos
+* Para que fique bem entendido, o Deadlock é o problema causado quando vários programas precisam dos recursos de outros processos para executar, um exemplo deste tipo de problema pode ser visto no problema dos filósofos
 
 # Resumos da leitura
 
