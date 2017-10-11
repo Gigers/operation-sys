@@ -10,8 +10,11 @@ Página do livro (Arquitetura de sistemas operacionais): 159
 
 Utiliza-se duas estratégias:
 * Estática:
+    * Utilizado pelos primeiros programas multiprogramados;
     * Espaço fixo separado para os programas;
-    * Espaços que ficam na memória -> Fragmentação interna;
+    * Espaços que ficam sobrando na memória -> Fragmentação interna;
+    * Tamanho de partições de memória feitas na inicialização do sistema;
+    * Se alguma alteração fosse necessária, esta seria feita através da reinicialização da máquina. 
 * Dinâmica:
     * Não há espaços pré-definidos;
     * Algoritimos de alocação dinâmica (Página: 165)
@@ -34,7 +37,7 @@ Técnica onde o programador define a quantidade de memória que será utilizada,
 Técnica utilizada apenas nos sistemas estáticos.
 
 ### Hiberfil.sys
-Arquivo usado como swap na memória
+Arquivo usado pelo Windows como swap na memória
 
 ### Exercícios
 
