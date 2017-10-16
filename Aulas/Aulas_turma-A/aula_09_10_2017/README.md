@@ -95,6 +95,6 @@ Arquivo usado pelo Windows como swap na memória
 
 * 12 - <code>Resposta dentro do diretório exe_12</code>
 
-* 13 - O swapping é uma técnica para o auxilio de gerência de memória, criando para resolver o problema de insuficiência de memória principal. Veja que todo programa, ele estando em espera, ou execução, está alocando memória, e isso em ambientes com poucos recursos de memória pode ser  um problema, assim para resolver este problema, o swap pega os programas que estão na memória principal em espera, que tem poucas chances de serem executados e envia eles para a memória secundária (Normalmente o disco rigido). E quando ele for executado, volta para a memória principal normalmente.
+* 13 - O swapping é uma técnica para o auxilio de gerência de memória, criado para resolver o problema de insuficiência de memória principal. Veja que todo programa, ele estando em espera, ou execução, está alocando memória, e isso em ambientes com poucos recursos de memória pode ser  um problema, assim para resolver este problema, o swap pega os programas que estão na memória principal em espera, que tem poucas chances de serem executados e envia eles para a memória secundária (Normalmente o disco rigido). E quando ele for executado, volta para a memória principal normalmente.
 
-* 14 - O loader permite que o programa seja colocado em qualquer posição da memória, assim toda vez que o programa for carregado do swap, o loader se encarrega de de fazer sua alocação.
+* 14 - O loader permite que o programa seja colocado em qualquer posição da memória, assim toda vez que o programa for carregado do swap, o loader se encarrega de fazer sua alocação.
