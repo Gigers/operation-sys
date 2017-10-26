@@ -112,7 +112,7 @@ R: As tabelas de páginação são estruturas de dados utilizadas para realizar 
 
 R: Indica se o segmento e ou página estão na memória principal.
 
-<code>8</code> - O que é um page fault, quando ocorre e quem controla a sua ocorrência ? Como uma elevada taxa de page fault pode comprimeter o sistema operacional ?
+<code>8</code> - O que é um page fault, quando ocorre e quem controla a sua ocorrência ? Como uma elevada taxa de page fault pode comprometer o sistema operacional ?
 
 R: Este é um processo que ocorre sempre que um processo faz referência a uma página que não está na memória principal, e esta verificação é feita através da entrada na <code>tabela de páginas</code>. Caso muitos page faults ocorram, o desempenho do sistema pode ser comprimetido.
 
