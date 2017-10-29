@@ -60,9 +60,20 @@ A política de busca de páginas, básicamente diz qual página serã ou não ca
 
 O processo antecipado pode ser usado sem problemas em momentos de page fault, para que subpáginas sejam puxadas, Isso evita o processador gastar tempo voltando a memória principal, o que é visto como uma grande vantagem.
 
-<!-- #### Working set -->
+#### Working set
 
-<!-- Adicionar na próxima bateria de estudos -->
+O Working set pode ser definido como um conjunto de páginas que está sendo utilizado pelo processo em determinado tempo. Isso torna eficiente alocar as páginas na memória, uma vez que essas são as páginas referênciadas pelo processo, e que serão necessários naquele intervalo de tempo.
+O intervalo de tempo é denominado <code>janela de working set</code>, e o tamanho desta é definido pela quantidade de páginas as quais estão se referênciando.
+
+Alguns pontos que devem ser observados sobre o working set são:
+
+* Caso o limite de páginas reais seja maior que o working set, menor serão as chances de uma página referênciada pelo processo não estar presente na memória;
+  * Na situação dita acima, o que pode ocorrer é a ocupação excessiva de memória;
+* No caso do limite ser menor que o working set, a paginação será alta, isso porque o working set não estará em sua totalidade na memória principal.
+
+Apesar de o conceito ser bastante simples, a implementação do working set não é nada simples, isso porque o sistema operacional terá de garantir que o working set de todos os processos estejam na memória principal. Isso faz com que esta técnica seja implementada apenas em sistemas de politica de alocação de páginas variável.
+
+Uma forma de implementar esta técnica, é a estratégia de frequência de <code>page fault</code>, onde é estabelecido um limite, e caso este seja ultrapassado, a quantidade de páginas limite aumenta, para que se tente buscar o working set completo do processo, e caso não ultrapasse o limite, o sistema continua o tratamento normal, evitando problemas com desempenho.
 
 #### Segmentação
 
