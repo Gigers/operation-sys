@@ -117,7 +117,7 @@ R: Pode ser escolhido o processo que está apresentando muito page fault, ou tod
 R: O princípio da localidade é pode ser divido em duas partes
 
 * Princípio da localidade temporal:
-  * Aqui é descrito que, um dado que tenha sido acessado recentemente, tem maiores chances de serem acessados. Isso é verdade, uma vez que, as variáveis de um programa em execução, são sempre mais acessadas.
+  * Aqui é descrito que, um dado que tenha sido acessado recentemente, tem maiores chances de serem acessados novamente. Isso é verdade, uma vez que, as variáveis de um programa em execução, são sempre mais acessadas.
 * Princípio da localidade espacial:
   * Nesta parte é levado como verdade que, há uma probabilidade maior de acesso a endereços de memória que estão fisicamente próximos. Isso também é uma verdade, porque no geral, o programa ao criar sua pilha de memória, faz isso de forma sequêncial, o que quase sempre garante que após acessar o endereço A, o B será acesso na sequência.
 

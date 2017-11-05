@@ -43,13 +43,13 @@ No espaço virtual as páginas são chamadas de páginas e no espaço real essas
 
 Todo o mapeamento de endereço virtual em real é realizado através das tabelas de páginas, cada processo possui sua própria tabela, e cada página virtual do processo tem sua entrada na tabela (ETP - entrada na tabela de páginas).
 
-Nesta técnica a memória virtual é formada pelo número de página virtual e o deslocamento.
+Nesta técnica a memória virtual é formada pelo número de página virtual mais o deslocamento.
 
 Frame / Pagina real = Memória principal
 Paginação = Memória virtual
 
 
-#### Políticas de busca das páginas (Página 179)
+#### Políticas de busca das páginas
 
 A política de busca de páginas, básicamente diz qual página serã ou não carregada para a memória principal. Para isso existem duas formas da realização do processo, sendo elas:
 
@@ -82,7 +82,7 @@ Neste tipo de técnica os programas são divididos em sub-rotinas e estruturas d
 
 Outro ponto diferente, na segmentação a alocação tem a ver com a lógica do programa, e na paginação nada disso ocorria.
 
-Seu mecanismo de mapeamento é similiar ao da paginação. Porém pontos ocmo a proteção, compartilhamento e estruturas de dados dinâmicas são mais simples que as de paginação.
+Seu mecanismo de mapeamento é similiar ao da paginação. Porém pontos como a proteção, compartilhamento e estruturas de dados dinâmicas são mais simples que as de paginação.
 
 Há ainda um outro ponto bastante interessante sobre a segmentação. Como foi dito, a segmentação divide a memória em espaços diferentes, e esses podem variar o tamanho durante a execução do programa, o que facilita muito a implementação de estruturas dinâmicas.
 
