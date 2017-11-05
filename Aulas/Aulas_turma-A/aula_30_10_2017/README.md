@@ -1,6 +1,10 @@
 # Aula - 30/10/2017
 
-<!-- Fazer resumo da politica de alocação -->
+<!-- Fazer resumo da TLB -->
+<!-- Fazer resumo da política de alocação -->
+<!-- Fazer resumo de memória virtual por segmentação com paginação-->
+<!-- Fazer resumo de swapping em memória virtual -->
+<!-- Thrashing -->
 
 ## Política de substituição de páginas
 
@@ -177,7 +181,7 @@ O page fault ocorre por todas as páginas que não estáo na memória principal,
 
 <code>B-)</code> - Indique o endereço real correspondete aos seguintes endereços virtuais 0, 1023, 1024, 6500 e 3728
 
-Para encontrar o endereço real de uma página, é necessário somar o endereço da memória virutal mais o deslocamento.
+Para encontrar o endereço real de uma página, é necessário somar o endereço do frame mais o deslocamento.
 
 Endereço real: deslocamento + endereço real
 
@@ -245,3 +249,195 @@ R: Em programas estruturados, boa parte dos recursos usados pelo sistema já era
   * Aqui a escolha vai para a página que está a mais tempo sem ser referênciada, isso vai de encontro a uma das bases ditas pelo principio da localidade, onde se uma página está a algum tempo sem ser referênciada, provavelmente, não será mais usada;
   * Para a implementação deste algoritimo é necessário que cada página, carregue uma referência da última vez que foi utilizada;
   * Mesmo sendo bastante eficiente, não é muito usado por conta do custo de implementação.
+
+<!-- 
+<code>22-)</code> - Considere um sistema com memória virtual por paginação com endereço virtual com 24 bits e página com 2048 endereços. Na tabela de páginas a seguir, de um processo em determinado instante de tempo, o bit de validade 1 indica página na memória principal e o bit de modificação 1 indica que a página sofreu alteração. -->
+
+
+<code>23</code> - Considere um sistema de memória virtual que implemente paginação, onde o limite de frames por processo é igual a três. Descreva para os itens abaixo, onde é apresentada uma sequência de referências a páginas pelo processo, o número total de page faults para as estratégias de realocação de páginas FIFO e LRU.
+
+Indique qual a mais eficaz para cada um dos itens:
+
+a-) 1/ 2/ 3/ 1/ 4/ 2/ 5/ 3/ 4/ 3
+
+J = Já estava alocado
+
+FIFO - Retira o que está a mais tempo na memória
+Melhor política
+
+5 Page faults
+
+1  |  2 | 3  | 1  | 4  | 2  | 5  | 3  | 4  | 3  |
+PF | PF | PF | J  | PF | J  | PF | J  | J  | J  |
+   |    |    |    |  1 |    | 2  |    |    |    |
+
+LRU - Retira a que está a mais tempo na memória sem ser referênciada
+
+B - Byte de referência
+1  | 2  | 3  | 1  | 4  | 2  | 5  | 3  | 4  | 3  |
+PF | PF | PF | B  | PF | PF | PF | PF | PF | B  |
+   |    |    |    | 2  | 3  | 1  | 4  | 2  |    |
+
+b-) 1/ 2/ 3/ 1/ 4/ 1/ 3/ 2/ 3/ 3
+
+FIFO = 7 Page faults
+1  |  2 | 3  | 1  | 4  | 1  | 3  | 2  | 3  | 3  |
+PF | PF | PF | J  | PF | PF | J  | PF | PF | J  |
+   |    |    |    | 1  | 2  |    | 3  | 4  |    |
+
+LRU = 5 Page faults (Melhor é o LRU)
+
+1  |  2 | 3  | 1  | 4  | 1  | 3  | 2  | 3  | 3  |
+PF | PF | PF | J  | PF | J  | J  | PF | J  | J  |
+   |    |    |    | 2  |    |    | 4  |    |    |
+
+<code>24</code> - Em um sistema de memória virtual que implementa paginação, as páginas têm 4 K endereços, a memória principal possui 32 Kb e o limite de páginas na memória principal é de 8 páginas. Um programa faz referência a endereços virtuais situados nas páginas 0, 2, 1, 9, 11, 4, 5, 2, 3, 1, nesta ordem. Após essa sequência de acessos, a tabela completa desse programa tem a configuração abaixo. As entradas em branco correspondem a páginas ausentes.
+
+
+<code>a-)</code> - Qual o tamanho (em bites) e o formato do endereço virtual ?
+
+K = 2 ^ 10 = 1.024
+
+Informações:
+Tamanho da página: 4 K
+Memória principal: 32 Kb
+Limite de páginas: 8
+
+R:
+
+Formato da memória:
+
+<code>2 ^ 4 = 16</code>
+4 bits para os possíveis 16 endereços
+
+```python
+   Deslocamento =  2 ** 2 + 2 ** 10 = 2 ** 12
+```
+
+<code>b-)</code> O processo faz novas referências a endereços virtuais situados nas páginas 5, 15, 12, 8 e 0, nesta ordem. Complete o quadro a seguir, que ilustra o processamento dessa sequência de acessos utilizando a estratégia de remoção FIFO. Mostre o estado final da tabela de páginas.
+
+
+Página referênciada | Página removida   | Page Fault    
+         5          |       -           | False
+         15         |       0           | True
+         12         |       2           | True
+         8          |       1           | True
+         0          |       9           | True
+
+
+<code>25</code> - Em um computador, o endereço virtual é de 16 bits e as páginas têm tamanho de 2 K endereços. O limite de páginas reais de um processo qualquer é de quatro páginas. Inicialmente, nenhuma página está na memória principal. Um programa faz referência a endereços virtuais situados nas páginas 0, 7, 2, 7, 5, 8, 9, 2 e 4, nesta ordem.
+
+<code>a-)</code> - Quantos bits do endereço virtual destinam-se ao número de páginas ? E ao deslocamento ?
+
+Número de páginas: 2 ^ 1 + 2 ^ 10 = 2 ^ 11
+
+16 bits de memória
+
+Endereço virtual: 4 bits
+Deslocamento: 11
+
+<code>b-)</code> - Ilustre o comportamento da política de substituição LRU mostrando, a cada referência, quais páginas estão em memória, os page faults causados e as páginas escolhidas para descarte.
+
+Resposta no arquivo <code>exe_25_b</code>
+
+<code>26-)</code> - Um sistema trabalha com gerência de memória virtual por paginação. Para todos os processos do sistema, o limite de páginas na memória principal é igual a 10. Considere um processo que esteja executando um programa e em determinado instante de tempo (T) a sua tabela de páginas possui o conteúdo a seguir. O bit de validade igual a 1 indica página na memória principal e o bit de modificação igual a 1 indica que a página sofreu alteração.
+
+<code>a-)</code> - Em quais instantes de tempo ocorreram um page out ?
+
+* T + 4
+* T + 6
+
+<code>b-)</code> - Em que instante de tempo o limite de páginas do processo na memória principal é atingido ?
+
+* T + 3
+
+<code>c-)</code> - Caso a política de realocação de páginas utilizada seja o FIFO, no instante (T + 1), qual a página que está há mais tempo na memória principal ? 
+
+* P0
+
+<code>d-)</code> - Como o sistema identifica que no instante (T + 2) não há ocorrência de page fault ?
+
+Através do bit de modificação
+
+<code>27</code> - Um sistema possui quatro frames. A tabela abaixo apresenta para cada página o momento da carga, o momento do último acesso, o bit de referência e o bit de modificação
+
+<code>a-)</code> - Qual página será substituida utilizando o algoritimo NRU ?
+Frame 0
+
+<code>b-)</code> - Qual página será substituida utilizando o algoritimo FIFO ?
+Frame 2
+
+<code>c-)</code> - Qual página será substituida utilizando o algoritimo LRU  ?
+Frame 1
+
+<code>28</code> - Considere um processo com limite de páginas reais igual a quatro e um sistema que implementa a politica de substituição de páginas FIFO. Quantos page faults ocorrerão considerando que as páginas virtuais são referenciadas na seguinte ordem 0 1 7 2 3 2 7 1 0 3. Repita o problema utilizando a política LRU
+
+
+FIFO
+Page faults = 6
+
+J = Já estava
+0  |  1 | 7  | 2  | 3  | 2  | 7  | 1  | 0  | 3  |
+PF | PF | PF | PF | PF | J  | J  | J  | PF | J  |
+   |    |    |    | 0  |    |    |    | 1  |    |
+
+LRU
+Page faults = 7
+0  |  1 | 7  | 2  | 3  | 2+ | 7+ | 1+ | 0  | 3  |
+PF | PF | PF | PF | PF | J  | J  | J  | PF | PF |
+   |    |    |    | 0  |    |    |    | 3  | 2  |
+
+<code>29</code> - Os sistemas operacionais OpenVMS e Windows NT/2000 utilizam dois buffers de páginas: um buffer de páginas livres e outro para páginas modificadas. Qual a vantagem de implementar um buffer de páginas modificadas ?
+
+R: Com este arquivo o page in se torna mais rápido e fácil, por não perder o tempo salvando elas em disco. Isso faz o sistema operacional ter ganhos
+
+<code>30</code> - Explique porque as páginas pequenas podem aumentar a taxa de paginação ?
+
+R: Por precisar alocar mais páginas para desempenhas as funções, isso pode trazer um grande aumento na paginação. Diferente das páginas grandes, que armazenam menos, porém isso já é o suficiente para o processo.
+
+<code>31</code> - A arquitetura VAX-11 utiliza 32 bits para endereçamento e páginas de 512 bytes. Calcule o número de bits para cada parte do endereço virtual, sabendo que o espaço de endereçamento é dividido em quatro partes: P0, P1, S0 e S1, sendo que cada uma possui sua própria tabela de páginas.
+
+R: 2 ^ 2 = 4 (P0, P1, S0, S1); (2 bits)
+Deslocamento: 2 ^ 9
+Memória NPV2: 21
+
+<code>32</code> - Um sistema computacional com espaço de endereçamento de 32 bits utiliza uma tabela de páginas de dois níveis. Os endereços virtuais são divididos em um campo de 9 bits para o primeiro nível da tabela, outro de 11 bits para o segundo nível, e um último campo para o deslocamento. Qual o tamanho das páginas ? Quantas páginas podem existir no espaço de endereçamento virtual ?
+
+R:
+Deslocamento = 2 ^ x
+
+x = 32 - (11 + 9)
+
+deslocamento = 2 ^ x = 4096
+
+Nível 1 + Nível 2 = Espaço existente para o endereçamento de páginas virtuais
+Dessa forma temos 2 ^ 20 páginas
+
+<code>33</code> - Na arquitetura SPARC, o espaço de endereçamento virtual de 4G pode ser dividido para cada processo em páginas de 4 Kb. A busca do endereço real correspondente ao endereço virtual gerado pelo processador envolve, em caso de falha na TLB, três níveis de acesso à memória principal. No primeiro nível, é feito um acesso a uma tabela única por processo de 256 entradas. Essa tabela gera o endereço de uma das 256 possíveis tabelas de nível 2. Cada tabela de nível 2 possui 64 entradas e, quando acessada, gera o endereço da tabela de nível 3 que deve ser consultada. Essa tabela, que também possui 64 entradas, gera o endereço real procurado. Essa tabela de níveis 1, 2 e 3 formam basicamente uma árvore de busca na memória e vão sendo criadas dinamicamente à medida que novas páginas na memória vão sendo alocadas para aquele processo. Qual a vantagem de se ter esse esquema de tabelas em múltiplos níveis, criadas dinamicamente sob demanda, em vez de uma tabela única criada integralmente quando da carga do processo ? Justifique sua resposta com um exemplo ?
+
+R: Caso fosse utilizado uma única tabela, teriamos problemas com o tamanho da tabela. Imagine um processo que tem milhares de entradas, e todas essas alocadas em uma única tabela, ela ficaria grande de mais e a gerência seria dificil, separar e colocar de forma dinâmica, facilita e mantém tudo funcionando sem que haja problemas com desempenho ou quantidade utilizada de memória.
+
+<!-- <code>34</code>-  -->
+
+<code>35</code> - Descreva o mecanismo de tradução de um endereço virtual em endereço real em sistemas que implementam gerência de memória virtual utilizando segmentação por paginação.
+
+A segmentação por paginação contém os seguintes elementos
+
+* NVS: Número do segmento virtual
+* NPV: Número de página virtual
+* Deslocamento
+
+R: Através do NVS, obtém-se uma entrada na tabela de segmentos, que contém informações da tabela de páginas do segmento. O NPV identifica unicamente a página virtual que contém o endereço, funcionando como um índice na tabela de páginas. O deslocamento indica a posição do endereço virtual em relação ao início da página na qual se encontra, assim o endereço físico é obtido, então, combinando-se o endereço do frame, localizado na tabela de páginas, com o deslocamento, contido no endereço virtual.
+
+
+<code>36</code> - Na técnica de swapping que critérios o sistema operacional pode utilizar para selecionar os processos que sofrerão swap out ?
+
+R: Utiliza-se a prioridade do processo e a chance que este tem de ser executado.
+
+<code>37</code> - Existe fragmentação em sistemas que implementam gerência de memória virtual ? Se existe, que tipo de fragmentação é encontado em sistemas com paginação ? Que tipo de fragmentação é encontrado em sistemas com segmentação ?
+
+R: Existe, na paginação, ocorre a fragmentação interna, normalmente ocorre quando a última página não ocupa todo o espaço. E na segmentação ocorre a fragmentação externa, entre as páginas.
+
+<code>38</code> - O que é thrashing em sistemas que implementam memória virtual ?
+
+O thrashing é um problema que ocorre em sistemas que implementam a memória virtual, nele o sistema fica mais tempo fazendo a gerência da memória do que trabalhando nos processos.

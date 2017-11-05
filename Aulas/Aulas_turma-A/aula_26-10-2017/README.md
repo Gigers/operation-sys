@@ -4,7 +4,7 @@
 
 <code>2</code> - Explique como um endereço virtual de um processo é traduzido para um endereço real na memória principal ?
 
-R: A tradução é feita através do mapeamento, este que é um mecânismo que trabalha com as referências das memórias e é controlado pelo MMU (Memory Management Unit). Com ele os problemas de alocação contigua foram resolvidos. E para iniciar EDP!!!!
+R: A tradução é feita através do mapeamento, este que é um mecânismo que trabalha com as referências das memórias e é controlado pelo MMU (Memory Management Unit). Com ele os problemas de alocação contigua foram resolvidos. E para iniciar EDP !
 
 <code>5</code> - Diferencie página virtual de página real.
 
