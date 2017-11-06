@@ -250,8 +250,22 @@ R: Em programas estruturados, boa parte dos recursos usados pelo sistema já era
   * Para a implementação deste algoritimo é necessário que cada página, carregue uma referência da última vez que foi utilizada;
   * Mesmo sendo bastante eficiente, não é muito usado por conta do custo de implementação.
 
-<!-- 
-<code>22-)</code> - Considere um sistema com memória virtual por paginação com endereço virtual com 24 bits e página com 2048 endereços. Na tabela de páginas a seguir, de um processo em determinado instante de tempo, o bit de validade 1 indica página na memória principal e o bit de modificação 1 indica que a página sofreu alteração. -->
+<code>22-)</code> - Considere um sistema com memória virtual por paginação com endereço virtual com 24 bits e página com 2048 endereços. Na tabela de páginas a seguir, de um processo em determinado instante de tempo, o bit de validade 1 indica página na memória principal e o bit de modificação 1 indica que a página sofreu alteração.
+
+<code>a-)</code> - Quantos bits possui o campo deslocamento do endereço virtual ?
+
+2 ^ 11 = 2048 = 11 bits
+
+<code>b-)</code> - Qual o número máximo de entradas que a tabela de páginas pode ter ?
+
+
+<code>c-)</code> - Qual o endereço físico que ocupa o último endereço da página 2 ?
+
+
+<code>d-)</code> - Qual o endereço físico traduzido do endereço virtual (00080A)16 ? 
+
+
+<code>e-)</code> - Caso ocorra um page fault e uma das páginas do processo deva ser descartada, quais páginas poderiam sofrer page out ?
 
 
 <code>23</code> - Considere um sistema de memória virtual que implemente paginação, onde o limite de frames por processo é igual a três. Descreva para os itens abaixo, onde é apresentada uma sequência de referências a páginas pelo processo, o número total de page faults para as estratégias de realocação de páginas FIFO e LRU.
@@ -268,27 +282,35 @@ Melhor política
 5 Page faults
 
 1  |  2 | 3  | 1  | 4  | 2  | 5  | 3  | 4  | 3  |
+
 PF | PF | PF | J  | PF | J  | PF | J  | J  | J  |
+
    |    |    |    |  1 |    | 2  |    |    |    |
 
 LRU - Retira a que está a mais tempo na memória sem ser referênciada
 
 B - Byte de referência
 1  | 2  | 3  | 1  | 4  | 2  | 5  | 3  | 4  | 3  |
+
 PF | PF | PF | B  | PF | PF | PF | PF | PF | B  |
+
    |    |    |    | 2  | 3  | 1  | 4  | 2  |    |
 
 b-) 1/ 2/ 3/ 1/ 4/ 1/ 3/ 2/ 3/ 3
 
 FIFO = 7 Page faults
 1  |  2 | 3  | 1  | 4  | 1  | 3  | 2  | 3  | 3  |
+
 PF | PF | PF | J  | PF | PF | J  | PF | PF | J  |
+
    |    |    |    | 1  | 2  |    | 3  | 4  |    |
 
 LRU = 5 Page faults (Melhor é o LRU)
 
 1  |  2 | 3  | 1  | 4  | 1  | 3  | 2  | 3  | 3  |
+
 PF | PF | PF | J  | PF | J  | J  | PF | J  | J  |
+
    |    |    |    | 2  |    |    | 4  |    |    |
 
 <code>24</code> - Em um sistema de memória virtual que implementa paginação, as páginas têm 4 K endereços, a memória principal possui 32 Kb e o limite de páginas na memória principal é de 8 páginas. Um programa faz referência a endereços virtuais situados nas páginas 0, 2, 1, 9, 11, 4, 5, 2, 3, 1, nesta ordem. Após essa sequência de acessos, a tabela completa desse programa tem a configuração abaixo. As entradas em branco correspondem a páginas ausentes.
@@ -378,13 +400,17 @@ Page faults = 6
 
 J = Já estava
 0  |  1 | 7  | 2  | 3  | 2  | 7  | 1  | 0  | 3  |
+
 PF | PF | PF | PF | PF | J  | J  | J  | PF | J  |
+
    |    |    |    | 0  |    |    |    | 1  |    |
 
 LRU
 Page faults = 7
 0  |  1 | 7  | 2  | 3  | 2+ | 7+ | 1+ | 0  | 3  |
+
 PF | PF | PF | PF | PF | J  | J  | J  | PF | PF |
+
    |    |    |    | 0  |    |    |    | 3  | 2  |
 
 <code>29</code> - Os sistemas operacionais OpenVMS e Windows NT/2000 utilizam dois buffers de páginas: um buffer de páginas livres e outro para páginas modificadas. Qual a vantagem de implementar um buffer de páginas modificadas ?
