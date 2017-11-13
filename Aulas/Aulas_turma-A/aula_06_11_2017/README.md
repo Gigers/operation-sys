@@ -48,7 +48,7 @@ Uma outra forma de acesso, que utiliza o acesso direto, é o acesso indexado, on
 
 ##### Operações de Entrada/Saída
 
-As operações de entrada e saída são uma interface oferecida pelo sistema operacional, para que as aplicações façam comunicação entre si. Através dessa é possível ler e gravar dados, traduzir nomes em endereços, assim como criar e excluir arquivos.
+As operações de entrada e saída são uma interface oferecida pelo sistema operacional.
 
 ##### Atributos
 
