@@ -66,6 +66,7 @@ A evolução dos sistemas operacionais trouxeram muitas mudanças, principalment
 Como o sistema operacional distribui as memórias para os demais programas ? Conteúdo da página 59
 
 Utiliza-se duas estratégias:
+
 * Alocação particionada estática:
     * Utilizado pelos primeiros programas multiprogramados;
     
@@ -101,9 +102,10 @@ Utiliza-se duas estratégias:
     * Para a solução da fragmentação externa há duas técnicas:
         * Na primeira, as memórias adjacentes ao programa que foi finalizado se juntam para criar espaços de memória livre maior;
         * Na segunda técnica, os programas são relocados, todos eles são movidos para áreas novas na memória, liberando assim todo espaço que está sendo subutilizado. (Conhecido também como partição dinâmica com relocação);
-            * É problemático por ser bastante complexo. 
+            * É problemático por ser bastante complexo;
+            * O sistema deve implementar relocação dinâmica.
     
-    * Algoritimos de alocação dinâmica (Página: 165)
+    * Estratégias de alocação de partição (Página: 165)
     Para realizar a implementação da alocação dinâmica existem três técnicas, e são elas:
         
         * Best-fit:
@@ -121,8 +123,11 @@ Utiliza-se duas estratégias:
             * Ordenada as memórias em ordem crescente;
             * Consome menos recursos do sistema.
 
-### Swap
+### Swapping
 
+O <code>swapping</code> é uma técnica para o auxilio de gerência de memória, criado para resolver o problema de insuficiência de memória principal. Veja que todo programa, ele estando em espera, ou execução, está alocando memória, e isso em ambientes com poucos recursos de memória pode ser um problema, assim para resolver este problema, o swap pega os programas que estão na memória principal em espera, que tem poucas chances de serem executados e envia eles para a memória secundária (Normalmente o disco rigido). E quando ele for executado, volta para a memória principal normalmente.
+
+* Característica:
     * Memória de troca;
     * Utilizada para contornar o problema da falta de memória principal;
     * Técnica aplicada a programas que estão esperando por espaços na memória para serem executados;
@@ -131,22 +136,44 @@ Utiliza-se duas estratégias:
     * Swap out: Tiro da memória e coloco no disco;
     * Swap in: Tipo do disco e passa para a memória.
 
+Para implementar esta técnica é necessário que o sistema operacional ofereça um <code>loader</code> com a capacidade de relocação dinâmica, caso não tenha, o programa será realocado apenas no momento do carregamento.
+
+Seu grande problema, é a quantidade de operações de E/S feitas por conta do processo de retirar e inserir processos na memória, em casos em que há pouca memória, pode ocorrer de o sistema operacional ficar trabalhando apenas para <code>swapping</code> e não executar os programas.
+
 ### Hiberfil.sys
 Arquivo usado pelo Windows como swap na memória
 
 ### Exercícios
 
-* 1 - Gerenciar os espaços de memória para cada programa, 
+* 1 - Gerênciar os espaços de memória utilizados pelos programas, realizar otimização dos processos que estão alocados na memória, bem como a proteção e controle de acesso aos endereços de memória, assim evitando problemas de segurança. 
+Por fim deve-se levar em consideração que a gerência de memória deve gerênciar os compartilhamentos de memória entre os processos e garantir que estes serão feitos de maneira segura. 
 
 * 2 - Está sendo subutilizado 1/4 da memória, isso porque apenas 30 Kb está sendo utilizado sobrando 10 Kb
 
-* 3 - Técnica onde o programador define a quantidade de memória que será utilizada, ele define o módulo principal, este será o maior, e não poderá ser modificado, e os módulos secundários, que poderão ser modificados. Técnica utilizada apenas nos sistemas estáticos.
+    * Informações (Alocação contigua):
+        * Espaço total: 40 Kb;
+        * Sistema operacional 10 Kb;
+        * Programa: 20 Kb;
+        * Total: 30 Kb sendo usado, ou seja, 10 Kb (1/4) estão sem uso algum. 
 
-* 4 - O programa não poderá ser executado, pois sem espaço não há execução.
+* 3 -
+    Com as informações passadas pelo exercício, o programa irá iniciar e trabalhar com um módulo de cada vez utilizando um espaço de memória de 30 Kb (Área de overlay)
+
+    * Informações (Alocação contigua)
+        * Espaço total: 64 Kb;
+        * Sistema operacional: 14 Kb;
+        * Programa: 90 Kb
+            * Módulo principal: 20 Kb;
+            * Módulo 1: 10 Kb;
+            * Módulo 2: 20 Kb;
+            * Módulo 3: 30 Kb;
+        * Enquanto o programa existir será executado: 34 Kb (S.O + Módulo principal)
+
+* 4 - O programa não poderá ser executado, o que poderia ser feito o módulo de 40 Kb poderia ser reduzido pelo programador em outros dois módulos, caso contrário não será possível executar o programa
 
 * 5
-    * Interna: Espaço vazio entre uma alocação e outra;
-    * Externa: Espaços cada vez menores na memória, difíceis de serem alocados.
+    * Interna: Problema que ocorre nas partições, onde o sistema operacional define partições de tamanho fixo que podem não ser utilizados pelo programa, gerando assim fragmentação interna;
+    * Externa: Ocorre em espaços cada vez menores na memória, difíceis de serem alocados, gerando fragmentação externa.
 
 * 6
 * a-) Fragmentação:
